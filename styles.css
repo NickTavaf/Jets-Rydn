@@ -97,7 +97,7 @@ main {
 
 .masonry {
     column-gap: 0;
-    padding-right: 45px;
+    padding-right: 25px;
 }
 
 #section1 .masonry { columns: 5; }
