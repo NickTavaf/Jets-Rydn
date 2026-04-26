@@ -1,31 +1,3 @@
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
-
-// Active section highlight
-const sections = ['section1'];
-const navLinks = {
-    section1: document.querySelector('a[href="#section1"]'),
-};
-
-window.addEventListener('scroll', () => {
-    let current = null;
-    sections.forEach(id => {
-        const el = document.getElementById(id);
-        if (el && window.scrollY >= el.offsetTop - 80) current = id;
-    });
-    sections.forEach(id => {
-        navLinks[id].classList.toggle('active', id === current);
-    });
-});
-
 // Shuffle function
 function shuffleGrid() {
     document.querySelectorAll('.masonry').forEach(masonry => {
@@ -52,6 +24,22 @@ document.getElementById('btn-reorder').addEventListener('click', e => {
     originalOrder.forEach(item => masonry.appendChild(item));
 });
 
+// Nav number scroll — 1 top, 2 middle, 3 bottom
+document.querySelector('a[href="#section1"]').addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+document.querySelector('a[href="#section2"]').addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: document.body.scrollHeight / 2, behavior: 'smooth' });
+});
+
+document.querySelector('a[href="#section3"]').addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+});
+
 // Grid canvas
 const btnGrid = document.getElementById('btn-grid');
 const canvas = document.getElementById('grid-canvas');
@@ -67,13 +55,11 @@ function drawGrid() {
     const nav = document.querySelector('nav');
     const navHeight = nav.offsetHeight;
 
-    // Horizontal line flush under nav
     ctx.beginPath();
     ctx.moveTo(0, navHeight);
     ctx.lineTo(canvas.width, navHeight);
     ctx.stroke();
 
-    // Vertical lines aligned to nav elements
     const navName = document.querySelector('.nav-name');
     const navLinksEl = document.querySelector('.nav-links');
     const navNumbers = document.querySelector('.nav-numbers');
