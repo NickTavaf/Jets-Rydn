@@ -110,7 +110,11 @@ main {
     display: block;
     overflow: hidden;
     cursor: pointer;
-    transition: background 0.12s;
+}
+
+.masonry-item img {
+    width: 100%;
+    display: block;
 }
 
 #section1 .masonry-item                { background: #cbcbcb; }

@@ -10,11 +10,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 });
 
 // Active section highlight
-const sections = ['section1', 'section2', 'section3'];
+const sections = ['section1'];
 const navLinks = {
     section1: document.querySelector('a[href="#section1"]'),
-    section2: document.querySelector('a[href="#section2"]'),
-    section3: document.querySelector('a[href="#section3"]'),
 };
 
 window.addEventListener('scroll', () => {
